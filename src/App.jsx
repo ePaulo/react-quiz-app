@@ -1,5 +1,6 @@
-import './App.scss'
+import './app.scss'
 import { Routes, Route } from 'react-router-dom'
+import Nav from './components/nav-comp/nav.comp'
 
 import Home from './containers/home-page/home.page'
 import Quiz from './containers/quiz-page/quiz.page'
@@ -8,8 +9,8 @@ import Score from './containers/score-page/score.page'
 
 function App() {
   return (
-    <div className='App'>
-      <div>Hello World!</div>
+    <div className='app-container'>
+      <Nav />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/quiz' element={<Quiz />} />
