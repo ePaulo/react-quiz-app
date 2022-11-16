@@ -6,12 +6,21 @@ import { decode } from 'html-entities'
 import { QuestionsContext } from '../../contexts/questions.context'
 
 const Question = ({ queIndex }) => {
-  const { questions } = useContext(QuestionsContext)
+  const { questions, answers, setAnswers } = useContext(QuestionsContext)
+
   const { question, correct_answer, incorrect_answers } = questions[queIndex]
-  console.log({ correct_answer }) // LOG
+  // console.log({ correct_answer }) // !LOG
   const sortedAnswers = [correct_answer, ...incorrect_answers].sort()
+
+  const selectAnswer = () => {
+    console.log({ sortedAnswers })
+    console.log({ answers })
+    const existingAnswer = answers.find(answer => console.log(answer)) // LOG
+    // TODO store selected answer into answers-context with reference id for the question and it's index number within the sorted array of m/c answers.
+  }
+
   const displayAnswers = sortedAnswers.map((answer, index) => (
-    <button type='button' className='answer' key={index}>
+    <button key={index} type='button' className='answer' onClick={selectAnswer}>
       {answer}
     </button>
   ))

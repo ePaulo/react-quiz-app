@@ -5,11 +5,14 @@ const QuestionsContext = createContext({
   setSelection: () => {},
   questions: [],
   setQuestions: () => [],
+  answers: [],
+  setAnswers: () => [],
 })
 
 const QuestionsProvider = ({ children }) => {
   const [selection, setSelection] = useState({})
   const [questions, setQuestions] = useState([])
+  const [answers, setAnswers] = useState([])
 
   // TODO add answers & setAnswers useState
 
@@ -30,6 +33,7 @@ const QuestionsProvider = ({ children }) => {
         if (data.response_code === 0) {
           // console.log(data.results) // !LOG
           setQuestions(data.results)
+          setAnswers([])
         } else {
           throw new Error('data response error')
         }
@@ -37,7 +41,14 @@ const QuestionsProvider = ({ children }) => {
       .catch(errMsg => console.error(errMsg))
   }, [selection])
 
-  const value = { selection, setSelection, questions, setQuestions }
+  const value = {
+    selection,
+    setSelection,
+    questions,
+    setQuestions,
+    answers,
+    setAnswers,
+  }
 
   return (
     <QuestionsContext.Provider value={value}>
