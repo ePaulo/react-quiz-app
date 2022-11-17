@@ -1,22 +1,22 @@
 import './quiz.styles.scss'
 
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { QuestionsContext } from '../../contexts/questions.context'
 
 import Question from '../../components/question-comp/question.comp'
 
 const Quiz = () => {
-  console.log('Quiz page opened') // LOG
+  console.log('Quiz page loaded') // LOG
 
   const { questions } = useContext(QuestionsContext)
 
   if (!questions.length) {
-    // console.log('no questions') // !LOG
-    return null
+    console.log('Waiting for Trivia data from API') // LOG
+    return <div>...loading</div>
   }
 
   const displayQuestions = questions.map((question, index) => {
-    return <Question key={index} queIndex={index} />
+    return <Question key={index} questionId={index} />
   })
 
   return (

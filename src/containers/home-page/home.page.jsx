@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import { QuestionsContext } from '../../contexts/questions.context'
 
 const Home = () => {
-  console.log('Home page opened') // LOG
+  console.log('Home page loaded') // LOG
   const { questions } = useContext(QuestionsContext)
 
   return (

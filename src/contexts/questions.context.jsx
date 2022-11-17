@@ -14,8 +14,6 @@ const QuestionsProvider = ({ children }) => {
   const [questions, setQuestions] = useState([])
   const [answers, setAnswers] = useState([])
 
-  // TODO add answers & setAnswers useState
-
   useEffect(() => {
     const {
       amount: amt = '10',
@@ -31,7 +29,6 @@ const QuestionsProvider = ({ children }) => {
       .then(response => response.json())
       .then(data => {
         if (data.response_code === 0) {
-          // console.log(data.results) // !LOG
           setQuestions(data.results)
           setAnswers([])
         } else {
@@ -40,6 +37,10 @@ const QuestionsProvider = ({ children }) => {
       })
       .catch(errMsg => console.error(errMsg))
   }, [selection])
+
+  useEffect(() => {
+    console.log({ answers }) // LOG
+  }, [answers])
 
   const value = {
     selection,
