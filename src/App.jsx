@@ -1,6 +1,6 @@
 import './app.scss'
 import { Routes, Route } from 'react-router-dom'
-import Nav from './components/nav-comp/nav.comp'
+import Nav from './components/navigation/nav.comp'
 
 import Home from './containers/home-page/home.page'
 import Quiz from './containers/quiz-page/quiz.page'

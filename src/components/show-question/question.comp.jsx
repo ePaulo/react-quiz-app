@@ -7,12 +7,15 @@ import { QuestionsContext } from '../../contexts/questions.context'
 
 const Question = ({ questionId }) => {
   const [selectedButton, setSelectedButton] = useState('')
-  const { questions, answers, setAnswers } = useContext(QuestionsContext)
+  const { questions, answers, setAnswers, showAnswers } =
+    useContext(QuestionsContext)
 
   const { question, correct_answer, incorrect_answers } = questions[questionId]
   const sortedAnswers = [correct_answer, ...incorrect_answers].sort()
 
   const selectAnswer = e => {
+    if (showAnswers) return
+
     // console.log(e.target) // !LOG
     const answerSelected = e.target.value
     const buttonSelected = e.target.id
@@ -66,7 +69,7 @@ const Question = ({ questionId }) => {
   })
 
   return (
-    <div className='question-comp'>
+    <div className='question-component'>
       <h3 className='question'>{decode(question)}</h3>
       <div className='answers'>{displayAnswers}</div>
     </div>

@@ -7,12 +7,18 @@ const QuestionsContext = createContext({
   setQuestions: () => [],
   answers: [],
   setAnswers: () => [],
+  showAnswers: false,
+  setShowAnswers: () => false,
+  scores: [],
+  setScores: () => [],
 })
 
 const QuestionsProvider = ({ children }) => {
   const [selection, setSelection] = useState({})
   const [questions, setQuestions] = useState([])
   const [answers, setAnswers] = useState([])
+  const [showAnswers, setShowAnswers] = useState(false)
+  const [scores, setScores] = useState([])
 
   useEffect(() => {
     const {
@@ -31,6 +37,7 @@ const QuestionsProvider = ({ children }) => {
         if (data.response_code === 0) {
           setQuestions(data.results)
           setAnswers([])
+          setShowAnswers(false)
         } else {
           throw new Error('data response error')
         }
@@ -39,7 +46,9 @@ const QuestionsProvider = ({ children }) => {
   }, [selection])
 
   useEffect(() => {
-    console.log({ answers }) // LOG
+    if (answers.length) {
+      console.log({ answers }) // LOG
+    }
   }, [answers])
 
   const value = {
@@ -49,6 +58,10 @@ const QuestionsProvider = ({ children }) => {
     setQuestions,
     answers,
     setAnswers,
+    showAnswers,
+    setShowAnswers,
+    scores,
+    setScores,
   }
 
   return (

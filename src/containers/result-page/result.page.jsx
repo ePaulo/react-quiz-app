@@ -1,8 +1,14 @@
 import './result.styles.scss'
 
+import Questions from '../../components/list-questions/questions.comp'
+
 const Result = () => {
-  console.log('Result page loaded') // LOG
-  return <div className='result-page-container'>Result page</div>
+  return (
+    <div className='result-page-container'>
+      <h1>Results</h1>
+      <Questions />
+    </div>
+  )
 }
 
 export default Result
