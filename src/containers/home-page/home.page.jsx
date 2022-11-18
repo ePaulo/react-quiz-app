@@ -3,7 +3,6 @@ import { useContext } from 'react'
 import { QuizQuestionsContext } from '../../contexts/quiz-questions.context'
 
 const Home = () => {
-  console.log('Home page loaded') // LOG
   const { quizQuestions } = useContext(QuizQuestionsContext)
 
   return (

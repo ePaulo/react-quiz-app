@@ -30,6 +30,7 @@
     .choice:active {
       background-color: orange;
       border: 2px solid rgb(192, 134, 58);
+      transition: 0.5s;
     }
   }
 }

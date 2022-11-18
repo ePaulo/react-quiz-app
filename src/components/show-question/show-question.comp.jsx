@@ -14,6 +14,8 @@ const ShowQuestion = ({ quizQuestionId }) => {
 
   // ---------- ===START=== handle button click ----------
   const handleClickQuestionChoice = event => {
+    if (canShowResults) return
+
     const playerSelectedChoice = event.target.value
 
     const existingPlayerAnswer = playerAnswers.find(
@@ -46,18 +48,39 @@ const ShowQuestion = ({ quizQuestionId }) => {
   const displayMultipleChoices = sortedMultipleChoices.map(
     (multipleChoice, index) => {
       if (1) {
-        // TEST logs
-        console.log({ multipleChoice }) // LOG
-        console.log(playerAnswers[quizQuestionId]?.playerChoice) // LOG
+        // console.log({ multipleChoice }) // !LOG
+        // console.log(playerAnswers[quizQuestionId]?.playerChoice) // !LOG
         console.log({ correct_answer }) // LOG
-        console.log({ canShowResults })
-        console.log('---------------------')
+        console.log({ canShowResults }) // LOG
+        console.log('---------------------') // LOG
       }
 
-      const dynamicStyles =
-        multipleChoice === playerAnswers[quizQuestionId]?.playerChoice
-          ? { background: 'rgb(243, 169, 79)' }
-          : { background: 'rgb(212, 180, 130)' }
+      let selectedStyles = {}
+      if (multipleChoice === playerAnswers[quizQuestionId]?.playerChoice) {
+        selectedStyles = {
+          backgroundColor: 'rgb(243, 169, 79)',
+          fontWeight: 'bold',
+          border: '4px solid orange',
+          color: 'black',
+        }
+        if (canShowResults) {
+          // Result page... show results
+          if (multipleChoice === correct_answer) {
+            selectedStyles = {
+              ...selectedStyles,
+              border: '5px solid green',
+              color: 'green',
+            }
+          } else {
+            // player's choice is incorrect
+            selectedStyles = {
+              ...selectedStyles,
+              border: '4px solid orangered',
+              color: 'orangered',
+            }
+          }
+        }
+      }
 
       return (
         <button
@@ -66,7 +89,7 @@ const ShowQuestion = ({ quizQuestionId }) => {
           className='choice'
           value={multipleChoice}
           onClick={handleClickQuestionChoice}
-          style={dynamicStyles}
+          style={selectedStyles}
         >
           {decode(multipleChoice)}
         </button>

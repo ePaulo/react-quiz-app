@@ -22,7 +22,7 @@ const QuizQuestionsProvider = ({ children }) => {
 
   useEffect(() => {
     const {
-      amount: amt = '1',
+      amount: amt = '2',
       category: cat = '9',
       difficulty: diff = 'easy',
       type = 'multiple',
@@ -37,7 +37,7 @@ const QuizQuestionsProvider = ({ children }) => {
         if (data.response_code === 0) {
           setQuizQuestions(data.results)
           setPlayerAnswers([])
-          setCanShowResults(false)
+          setCanShowResults(true)
         } else {
           throw new Error('data response error')
         }
