@@ -1,4 +1,4 @@
-import './nav.styles.scss'
+import './navigation.styles.scss'
 import { Link } from 'react-router-dom'
 
 const Nav = () => {

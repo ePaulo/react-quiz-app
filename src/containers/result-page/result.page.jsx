@@ -1,12 +1,12 @@
 import './result.styles.scss'
 
-import Questions from '../../components/list-questions/questions.comp'
+import ListQuestions from '../../components/list-questions/list-questions.comp'
 
 const Result = () => {
   return (
     <div className='result-page-container'>
       <h1>Results</h1>
-      <Questions />
+      <ListQuestions />
     </div>
   )
 }

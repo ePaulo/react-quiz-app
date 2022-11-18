@@ -1,15 +1,15 @@
 import './home.styles.scss'
 import { useContext } from 'react'
-import { QuestionsContext } from '../../contexts/questions.context'
+import { QuizQuestionsContext } from '../../contexts/quiz-questions.context'
 
 const Home = () => {
   console.log('Home page loaded') // LOG
-  const { questions } = useContext(QuestionsContext)
+  const { quizQuestions } = useContext(QuizQuestionsContext)
 
   return (
     <div className='home-page-container'>
       <h1>Home</h1>
-      <div>Form to capture selection variables for questions go here</div>
+      <div>Form to capture quiz selection options goes here</div>
     </div>
   )
 }
