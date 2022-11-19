@@ -3,7 +3,9 @@ import { useContext } from 'react'
 import { QuizQuestionsContext } from '../../contexts/quiz-questions.context'
 
 const Home = () => {
-  const { quizQuestions } = useContext(QuizQuestionsContext)
+  const { quizSelection, setQuizSelection } = useContext(QuizQuestionsContext)
+
+  console.log(quizSelection)
 
   return (
     <div className='home-page-container'>

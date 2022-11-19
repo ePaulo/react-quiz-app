@@ -5,7 +5,7 @@ import { QuizQuestionsContext } from '../../contexts/quiz-questions.context'
 
 import ShowQuestion from '../show-question/show-question.comp'
 
-const ListQuestions = () => {
+const ListQuestions = ({ container }) => {
   const { quizQuestions } = useContext(QuizQuestionsContext)
 
   if (!quizQuestions.length) {
@@ -14,7 +14,13 @@ const ListQuestions = () => {
   }
 
   const displayQuizQuestions = quizQuestions.map((quizQuestion, index) => {
-    return <ShowQuestion key={index} quizQuestionId={index} />
+    return (
+      <ShowQuestion
+        key={index}
+        quizQuestionId={index}
+        showResult={container === 'result'}
+      />
+    )
   })
 
   return <div className='list-questions-component'>{displayQuizQuestions}</div>

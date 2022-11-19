@@ -7,8 +7,6 @@ const QuizQuestionsContext = createContext({
   setQuizQuestions: () => [],
   playerAnswers: [],
   setPlayerAnswers: () => [],
-  canShowResults: false,
-  setCanShowResults: () => false,
   allQuizScores: [],
   setAllQuizScores: () => [],
 })
@@ -17,7 +15,6 @@ const QuizQuestionsProvider = ({ children }) => {
   const [quizSelection, setQuizSelection] = useState({})
   const [quizQuestions, setQuizQuestions] = useState([])
   const [playerAnswers, setPlayerAnswers] = useState([])
-  const [canShowResults, setCanShowResults] = useState(false)
   const [allQuizScores, setAllQuizScores] = useState([])
 
   useEffect(() => {
@@ -37,7 +34,6 @@ const QuizQuestionsProvider = ({ children }) => {
         if (data.response_code === 0) {
           setQuizQuestions(data.results)
           setPlayerAnswers([])
-          setCanShowResults(true)
         } else {
           throw new Error('data response error')
         }
@@ -58,8 +54,6 @@ const QuizQuestionsProvider = ({ children }) => {
     setQuizQuestions,
     playerAnswers,
     setPlayerAnswers,
-    canShowResults,
-    setCanShowResults,
     allQuizScores,
     setAllQuizScores,
   }

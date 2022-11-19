@@ -13,9 +13,9 @@ function App() {
       <Nav />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/quiz' element={<Quiz />} />
-        <Route path='/result' element={<Result />} />
         <Route path='/score' element={<Score />} />
+        <Route path='/result' element={<Result />} />
+        <Route path='/quiz' element={<Quiz />} />
       </Routes>
     </div>
   )
