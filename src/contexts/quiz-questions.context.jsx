@@ -28,8 +28,8 @@ const QuizQuestionsProvider = ({ children }) => {
     const url = 'https://opentdb.com/api.php'
     const query = `?amount=${amount}&category=${category}&difficulty=${difficulty}&type=${type}`
 
-    console.log(quizSelection) // LOG
-    console.log(url + query) // LOG
+    // console.log(quizSelection) // !LOG
+    // console.log(url + query) // !LOG
 
     fetch(url + query)
       .then(response => response.json())
@@ -46,7 +46,7 @@ const QuizQuestionsProvider = ({ children }) => {
 
   useEffect(() => {
     if (playerAnswers.length) {
-      console.log({ playerAnswers }) // LOG
+      // console.log({ playerAnswers }) // !LOG
     }
   }, [playerAnswers])
 

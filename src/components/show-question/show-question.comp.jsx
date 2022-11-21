@@ -45,8 +45,8 @@ const ShowQuestion = ({ quizQuestionId, showResult }) => {
   // ---------- !==END!== handle button click ----------
 
   // ---------- ===START=== display multiple choices ----------
-  console.log({ showResult }) // LOG
-  console.log({ correct_answer }) // LOG
+  // console.log({ showResult }) // !LOG
+  // console.log({ correct_answer }) // !LOG
   const displayMultipleChoices = sortedMultipleChoices.map(
     (multipleChoice, index) => {
       if (0) {

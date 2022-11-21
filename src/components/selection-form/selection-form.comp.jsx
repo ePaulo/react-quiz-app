@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Select from 'react-select'
 import { QuizQuestionsContext } from '../../contexts/quiz-questions.context'
 import {
@@ -19,6 +20,7 @@ const SelectionForm = () => {
   })
 
   const { setQuizSelection } = useContext(QuizQuestionsContext)
+  const navigate = useNavigate()
 
   const handleChangeAmount = event => setQuizAmount(event.target.value)
   const handleSelectCategory = choice => setQuizCategory(choice)
@@ -27,10 +29,11 @@ const SelectionForm = () => {
 
   const handleFormSubmit = event => {
     event.preventDefault()
-    console.log({ quizAmount })
-    console.log(quizCategory)
-    console.log(quizDifficulty)
-    console.log(quizType)
+    // console.log({ quizAmount }) // !LOG
+    // console.log(quizCategory) // !LOG
+    // console.log(quizDifficulty) // !LOG
+    // console.log(quizType) // !LOG
+
     if (quizAmount && quizCategory && quizDifficulty && quizType) {
       setQuizSelection({
         amount: quizAmount,
@@ -38,6 +41,7 @@ const SelectionForm = () => {
         difficulty: quizDifficulty.value,
         type: quizType.value,
       })
+      navigate('/quiz')
     } else {
       alert('Please select all options')
     }
