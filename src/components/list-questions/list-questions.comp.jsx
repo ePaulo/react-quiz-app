@@ -9,7 +9,7 @@ const ListQuestions = ({ container }) => {
   const { quizQuestions } = useContext(QuizQuestionsContext)
 
   if (!quizQuestions.length) {
-    console.log('Waiting for Trivia data from API') // LOG
+    console.log('Waiting for Trivia data from API')
     return <div>...loading</div>
   }
 
@@ -23,7 +23,7 @@ const ListQuestions = ({ container }) => {
     )
   })
 
-  return <div className='list-questions-component'>{displayQuizQuestions}</div>
+  return <div className='component_list-questions'>{displayQuizQuestions}</div>
 }
 
 export default ListQuestions

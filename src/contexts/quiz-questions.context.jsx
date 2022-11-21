@@ -12,21 +12,24 @@ const QuizQuestionsContext = createContext({
 })
 
 const QuizQuestionsProvider = ({ children }) => {
-  const [quizSelection, setQuizSelection] = useState({})
   const [quizQuestions, setQuizQuestions] = useState([])
   const [playerAnswers, setPlayerAnswers] = useState([])
   const [allQuizScores, setAllQuizScores] = useState([])
+  const [quizSelection, setQuizSelection] = useState(() => ({
+    amount: '10',
+    category: '9',
+    difficulty: 'easy',
+    type: 'multiple',
+  }))
 
   useEffect(() => {
-    const {
-      amount: amt = '2',
-      category: cat = '9',
-      difficulty: diff = 'easy',
-      type = 'multiple',
-    } = quizSelection
+    const { amount, category, difficulty, type } = quizSelection
 
     const url = 'https://opentdb.com/api.php'
-    const query = `?amount=${amt}&category=${cat}&difficulty=${diff}&type=${type}`
+    const query = `?amount=${amount}&category=${category}&difficulty=${difficulty}&type=${type}`
+
+    console.log(quizSelection) // LOG
+    console.log(url + query) // LOG
 
     fetch(url + query)
       .then(response => response.json())
@@ -35,7 +38,7 @@ const QuizQuestionsProvider = ({ children }) => {
           setQuizQuestions(data.results)
           setPlayerAnswers([])
         } else {
-          throw new Error('data response error')
+          // throw new Error('data response error') // !LOG
         }
       })
       .catch(errMsg => console.error(errMsg))

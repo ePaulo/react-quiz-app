@@ -3,7 +3,7 @@ import ListQuestions from '../../components/list-questions/list-questions.comp'
 
 const Result = () => {
   return (
-    <div className='result-page-container'>
+    <div className='container_result-page'>
       <h1>Results</h1>
       <ListQuestions container='result' />
     </div>

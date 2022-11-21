@@ -1,33 +1,31 @@
-.selection-form-component {
-  form {
+.component_selection-form {
+  .selection-form {
     display: flex;
     flex-direction: column;
     row-gap: 20px;
 
-    .type,
-    .category,
-    .difficulty {
+    .input_quiz-amount {
+      width: 350px;
+      margin: 0 auto;
+      padding: 10px;
+      background-color: goldenrod;
+      border: 1px solid rgb(172, 130, 24);
+      color: rgb(41, 41, 41);
+      font-weight: bold;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    .select_quiz-parameter {
       width: 350px;
       margin: 0;
       padding: 0;
       font-weight: bold;
       cursor: pointer;
       text-decoration: none;
-
-      :hover,
-      :active {
-        border-color: rgb(209, 171, 74);
-        outline: none;
-      }
-
-      :visited,
-      :focus {
-        border-color: rgb(172, 130, 24);
-        outline: none;
-      }
     }
 
-    .start-quiz-button {
+    .button_quiz-start {
       width: 100px;
       margin: 0 auto;
       padding: 10px;
@@ -38,7 +36,7 @@
       font-size: 16px;
     }
 
-    .start-quiz-button:hover {
+    .button_start-quiz:hover {
       background-color: rgb(172, 130, 24);
       border-color: goldenrod;
     }

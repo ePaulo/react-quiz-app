@@ -1,5 +1,33 @@
+const selectStyles = {
+  control: (styles, { isFocused, isSelected }) => ({
+    ...styles,
+    backgroundColor: isFocused ? 'rgb(209, 171, 74)' : 'goldenrod',
+    border: isFocused ? '3px solid goldenrod' : '3px solid rgb(172, 130, 24)',
+    boxShadow: 'none',
+    '&:hover': { outline: 'none' },
+    color: 'rgb(0, 0, 0)',
+    fontWeight: 'bold',
+  }),
+  option: (styles, { isFocused, isSelected }) => ({
+    ...styles,
+    padding: '0 3px',
+    border: '2px solid rgb(253, 252, 249)',
+    backgroundColor: isSelected
+      ? 'rgb(172, 130, 24)'
+      : isFocused
+      ? 'rgb(209, 171, 74)'
+      : 'rgb(253, 252, 249)',
+    color: 'rgb(41, 41, 41)',
+    ':active': { backgroundColor: 'rgb(255, 195, 42)' },
+  }),
+  placeholder: styles => ({
+    ...styles,
+    color: 'rgb(41, 41, 41)',
+  }),
+}
+
 const categoryOptions = [
-  { value: 'any', label: 'Any' },
+  { value: 'any', label: 'Any Category' },
   { value: '9', label: 'General Knowledge' },
   { value: '10', label: 'Entertainment: Books' },
   { value: '11', label: 'Entertainment: Film' },
@@ -8,7 +36,7 @@ const categoryOptions = [
   { value: '14', label: 'Entertainment: Television' },
   { value: '15', label: 'Entertainment: Video Games' },
   { value: '16', label: 'Entertainment: Board Games' },
-  { value: '17', label: 'Science &amp; Nature' },
+  { value: '17', label: 'Science and Nature' },
   { value: '18', label: 'Science: Computers' },
   { value: '19', label: 'Science: Mathematics' },
   { value: '20', label: 'Mythology' },
@@ -39,4 +67,4 @@ const typeOptions = [
   { value: 'boolean', label: 'True / False' },
 ]
 
-export { categoryOptions, difficultyOptions, typeOptions }
+export { selectStyles, categoryOptions, difficultyOptions, typeOptions }

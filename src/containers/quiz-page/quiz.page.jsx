@@ -3,7 +3,7 @@ import ListQuestions from '../../components/list-questions/list-questions.comp'
 
 const Quiz = () => {
   return (
-    <div className='quiz-page-container'>
+    <div className='container_quiz-page'>
       <h1>Quiz</h1>
       <ListQuestions container='quiz' />
     </div>
