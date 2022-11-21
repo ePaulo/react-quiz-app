@@ -11,7 +11,7 @@ import {
 import './selection-form.styles.scss'
 
 const SelectionForm = () => {
-  const [quizAmount, setQuizAmount] = useState(10)
+  const [quizAmount, setQuizAmount] = useState(5)
   const [quizCategory, setQuizCategory] = useState(null)
   const [quizDifficulty, setQuizDifficulty] = useState(null)
   const [quizType, setQuizType] = useState({

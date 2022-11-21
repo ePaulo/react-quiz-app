@@ -16,7 +16,7 @@ const QuizQuestionsProvider = ({ children }) => {
   const [playerAnswers, setPlayerAnswers] = useState([])
   const [allQuizScores, setAllQuizScores] = useState([])
   const [quizSelection, setQuizSelection] = useState(() => ({
-    amount: '10',
+    amount: '5',
     category: '9',
     difficulty: 'easy',
     type: 'multiple',
@@ -45,10 +45,11 @@ const QuizQuestionsProvider = ({ children }) => {
   }, [quizSelection])
 
   useEffect(() => {
+    // setAllQuizScores([])
     if (playerAnswers.length) {
-      // console.log({ playerAnswers }) // !LOG
+      console.log({ allQuizScores }) // LOG
     }
-  }, [playerAnswers])
+  }, [allQuizScores])
 
   const value = {
     quizSelection,

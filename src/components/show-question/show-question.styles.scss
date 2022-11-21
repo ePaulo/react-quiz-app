@@ -21,16 +21,17 @@
       border: 2px solid rgb(206, 181, 128);
       border-radius: 8px;
       cursor: pointer;
-    }
-    .choice:hover {
-      background-color: rgb(243, 169, 79);
-      transition: 0.5s;
-    }
 
-    .choice:active {
-      background-color: orange;
-      border: 2px solid rgb(192, 134, 58);
-      transition: 0.5s;
+      &:hover {
+        background-color: rgb(243, 169, 79);
+        transition: 0.5s;
+      }
+
+      &:active {
+        background-color: orange;
+        border: 2px solid rgb(192, 134, 58);
+        transition: 0.5s;
+      }
     }
   }
 }

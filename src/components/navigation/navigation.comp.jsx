@@ -17,7 +17,7 @@ const Nav = () => {
       </Link>
 
       <Link className='nav-link' to='/score'>
-        Score
+        Scores
       </Link>
     </nav>
   )

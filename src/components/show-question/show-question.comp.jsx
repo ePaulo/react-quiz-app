@@ -3,6 +3,9 @@ import { decode } from 'html-entities'
 import { useContext } from 'react'
 import { QuizQuestionsContext } from '../../contexts/quiz-questions.context'
 
+// TODO for Result page, calculate and show score.
+// TODO next, display a form for saving name and details.
+
 const ShowQuestion = ({ quizQuestionId, showResult }) => {
   const { quizQuestions, playerAnswers, setPlayerAnswers } =
     useContext(QuizQuestionsContext)
@@ -49,11 +52,9 @@ const ShowQuestion = ({ quizQuestionId, showResult }) => {
   // console.log({ correct_answer }) // !LOG
   const displayMultipleChoices = sortedMultipleChoices.map(
     (multipleChoice, index) => {
-      if (0) {
-        // console.log({ multipleChoice }) // !LOG
-        // console.log(playerAnswers[quizQuestionId]?.playerChoice) // !LOG
-        // console.log('---------------------') // !LOG
-      }
+      // console.log({ multipleChoice }) // !LOG
+      // console.log(playerAnswers[quizQuestionId]?.playerChoice) // !LOG
+      // console.log('---------------------') // !LOG
 
       let selectedStyles = {}
       if (multipleChoice === playerAnswers[quizQuestionId]?.playerChoice) {

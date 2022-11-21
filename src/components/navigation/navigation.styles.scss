@@ -16,10 +16,11 @@
     color: rgb(41, 41, 41);
     font-weight: bold;
     font-size: 16px;
-  }
+    text-decoration: none;
 
-  .nav-link:hover {
-    background-color: rgb(172, 130, 24);
-    border-color: goldenrod;
+    &:hover {
+      background-color: rgb(172, 130, 24);
+      border-color: goldenrod;
+    }
   }
 }
