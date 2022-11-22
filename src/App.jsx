@@ -5,7 +5,7 @@ import Nav from './components/navigation/navigation.comp'
 import Home from './containers/home-page/home.page'
 import Quiz from './containers/quiz-page/quiz.page'
 import Result from './containers/result-page/result.page'
-import Score from './containers/score-page/score.page'
+import Scores from './containers/scores-page/scores.page'
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
       <Nav />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/score' element={<Score />} />
+        <Route path='/scores' element={<Scores />} />
         <Route path='/result' element={<Result />} />
         <Route path='/quiz' element={<Quiz />} />
       </Routes>

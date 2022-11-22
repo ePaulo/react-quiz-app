@@ -3,9 +3,6 @@ import { decode } from 'html-entities'
 import { useContext } from 'react'
 import { QuizQuestionsContext } from '../../contexts/quiz-questions.context'
 
-// TODO for Result page, calculate and show score.
-// TODO next, display a form for saving name and details.
-
 const ShowQuestion = ({ quizQuestionId, showResult }) => {
   const { quizQuestions, playerAnswers, setPlayerAnswers } =
     useContext(QuizQuestionsContext)

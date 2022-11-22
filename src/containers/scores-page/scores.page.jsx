@@ -1,11 +1,17 @@
 import './scores.styles.scss'
 
-// TODO list all quiz scores
+import ListScores from '../../components/list-scores/list-scores.comp'
+
 // TODO button to (re)store quiz scores in local storage
 
-const Score = () => {
-  // console.log('Score page loaded') // !LOG
-  return <div className='container_scores-page'>Score page</div>
+const Scores = () => {
+  // console.log('Scores page loaded') // !LOG
+  return (
+    <div className='container_scores-page'>
+      <h1>Scores</h1>
+      <ListScores />
+    </div>
+  )
 }
 
-export default Score
+export default Scores

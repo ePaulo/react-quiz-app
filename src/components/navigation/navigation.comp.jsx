@@ -16,7 +16,7 @@ const Nav = () => {
         Result
       </Link>
 
-      <Link className='nav-link' to='/score'>
+      <Link className='nav-link' to='/scores'>
         Scores
       </Link>
     </nav>

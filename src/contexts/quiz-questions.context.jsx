@@ -46,7 +46,7 @@ const QuizQuestionsProvider = ({ children }) => {
 
   useEffect(() => {
     // setAllQuizScores([])
-    if (playerAnswers.length) {
+    if (false && playerAnswers.length) {
       console.log({ allQuizScores }) // LOG
     }
   }, [allQuizScores])
