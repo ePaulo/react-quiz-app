@@ -1,54 +1,71 @@
 import './list-scores.styles.scss'
 
-import { useContext } from 'react'
+// import { useContext } from 'react'
 import MaterialTable from '@material-table/core'
-import { QuizQuestionsContext } from '../../contexts/quiz-questions.context'
+// import { QuizQuestionsContext } from '../../contexts/quiz-questions.context'
 import { categoryOptions } from '../selection-form/form-select.options'
 
 const ListScores = () => {
-  const { allQuizScores } = useContext(QuizQuestionsContext)
-  console.log({ allQuizScores }) // LOG
-  console.log({ categoryOptions }) // LOG
+  const savedQuizScores = JSON.parse(localStorage.getItem('quizScores'))
 
-  if (!allQuizScores.length) {
-    return <div>No saved Quiz scores</div>
+  if (!savedQuizScores) {
+    return (
+      <div className='component__list-scores'>
+        <p className='no-saved-scores'>No saved Quiz scores</p>
+      </div>
+    )
   }
 
   const columns = [
+    { title: 'Date', field: 'dateStr' },
+    { title: 'Time', field: 'timeStr' },
     { title: 'Category', field: 'categoryLabel' },
-    { title: 'Type', field: 'type' },
-    { title: 'Difficulty', field: 'difficulty' },
-    { title: 'Questions', field: 'amount' },
+    { title: 'Level', field: 'difficulty' },
     { title: 'Player', field: 'playerName' },
-    { title: 'Score', field: 'quizScore' },
+    { title: 'Correct', field: 'correctRatio' },
+    { title: 'Score', field: 'scoreRatio' },
   ]
 
-  const rows = allQuizScores.map((scoreInfo, id) => {
-    const { playerName, quizScore, quizSelection } = scoreInfo
-    const { amount, category, difficulty, type } = quizSelection
+  const rows = savedQuizScores.map((scoreInfo, id) => {
+    const {
+      dateStr,
+      timeStr,
+      playerName,
+      totalCorrect,
+      totalScore,
+      quizSelection,
+    } = scoreInfo
+    const { amount, category, difficulty } = quizSelection
 
+    // convert category id value to label name
     const categoryLabel = categoryOptions.find(
       optionInfo => optionInfo.value === category
     ).label
 
+    const correctRatio = `${totalCorrect} / ${amount}`
+    const scoreRatio = `${totalScore} / ${amount * 2}`
+
     return {
       id,
-      playerName,
-      quizScore,
-      amount,
+      dateStr,
+      timeStr,
       categoryLabel,
       difficulty,
-      type,
+      playerName,
+      correctRatio,
+      scoreRatio,
     }
   })
 
   const styleOptions = {
-    toolbar: false,
-    showTitle: false,
+    toolbar: true,
+    showTitle: true,
     search: false,
     paging: false,
     tableLayout: 'auto',
     maxColumnSort: 1,
+    addRowPosition: 'last',
+    padding: 'dense',
     headerStyle: {
       backgroundColor: 'rgb(225, 195, 40)',
       fontSize: '1.1rem',
@@ -60,13 +77,18 @@ const ListScores = () => {
     }),
   }
 
+  const components = {
+    Container: props => <div className='list-scores'>{props.children}</div>,
+  }
+
   return (
-    <div className='container_list-scores'>
+    <div className='container__list-scores'>
       <MaterialTable
         columns={columns}
         data={rows}
-        title='Quiz Scores'
+        title='Note: click column title to reorder rows'
         options={styleOptions}
+        components={components}
       />
     </div>
   )

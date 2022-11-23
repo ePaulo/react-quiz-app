@@ -28,7 +28,7 @@ const ListQuestions = ({ container }) => {
     )
   })
 
-  return <div className='component_list-questions'>{displayQuizQuestions}</div>
+  return <div className='component__list-questions'>{displayQuizQuestions}</div>
 }
 
 export default ListQuestions

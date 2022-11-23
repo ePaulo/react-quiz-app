@@ -1,3 +1,28 @@
-.container_scores-page {
+.container__scores-page {
   border: none;
+
+  .title_scores-page {
+    margin-bottom: 10px;
+  }
+
+  .button_delete-scores {
+    width: 200px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: goldenrod;
+    border: 2px solid rgb(172, 130, 24);
+    border-radius: 5px;
+    color: rgb(41, 41, 41);
+    font-weight: bold;
+    font-size: 16px;
+    transition: 0.1s;
+
+    &:hover {
+      background-color: rgb(172, 24, 24);
+      border: 3px solid rgba(255, 0, 0, 0.534);
+      text-shadow: 2px 2px 8px rgba(255, 0, 0, 0.534);
+      color: rgb(214, 152, 152);
+      cursor: pointer;
+    }
+  }
 }

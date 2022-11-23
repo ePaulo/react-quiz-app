@@ -96,7 +96,7 @@ const ShowQuestion = ({ quizQuestionId, showResult }) => {
   // ---------- !==END!== display multiple choices ----------
 
   return (
-    <div className='component_show-question'>
+    <div className='component__show-question'>
       <h3 className='question'>{decode(question)}</h3>
       <div className='choices'>{displayMultipleChoices}</div>
     </div>

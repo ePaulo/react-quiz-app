@@ -4,8 +4,8 @@ import ShowScore from '../../components/show-score/show-score.comp'
 
 const Result = () => {
   return (
-    <div className='container_result-page'>
-      <h1>Result</h1>
+    <div className='container__result-page'>
+      <h1 className='title_result-page'>Result</h1>
       <ShowScore />
       <ListQuestions container='result' />
     </div>

@@ -48,7 +48,7 @@ const SelectionForm = () => {
   }
 
   return (
-    <div className='component_selection-form'>
+    <div className='component__selection-form'>
       <form className='selection-form' onSubmit={handleFormSubmit}>
         <input
           type='number'

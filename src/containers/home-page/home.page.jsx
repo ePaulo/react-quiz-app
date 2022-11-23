@@ -3,8 +3,8 @@ import SelectionForm from '../../components/selection-form/selection-form.comp'
 
 const Home = () => {
   return (
-    <div className='container_home-page'>
-      <h1>Home</h1>
+    <div className='container__home-page'>
+      <h1 className='title_home-page'>Home</h1>
       <SelectionForm />
     </div>
   )

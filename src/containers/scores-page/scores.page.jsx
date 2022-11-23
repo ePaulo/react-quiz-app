@@ -1,15 +1,28 @@
 import './scores.styles.scss'
+import { useNavigate } from 'react-router-dom'
 
 import ListScores from '../../components/list-scores/list-scores.comp'
 
-// TODO button to (re)store quiz scores in local storage
-
 const Scores = () => {
-  // console.log('Scores page loaded') // !LOG
+  const navigate = useNavigate()
+
+  const handleDeleteScores = () => {
+    localStorage.removeItem('quizScores')
+    navigate('/')
+  }
+
   return (
-    <div className='container_scores-page'>
-      <h1>Scores</h1>
+    <div className='container__scores-page'>
+      <h1 className='title_scores-page'>Saved Scores</h1>
       <ListScores />
+      <button
+        className='button_delete-scores'
+        type='button'
+        hidden={localStorage.getItem('quizScores') === null}
+        onClick={handleDeleteScores}
+      >
+        Delete Saved Scores
+      </button>
     </div>
   )
 }

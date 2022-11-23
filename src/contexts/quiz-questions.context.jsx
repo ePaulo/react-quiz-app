@@ -7,14 +7,11 @@ const QuizQuestionsContext = createContext({
   setQuizQuestions: () => [],
   playerAnswers: [],
   setPlayerAnswers: () => [],
-  allQuizScores: [],
-  setAllQuizScores: () => [],
 })
 
 const QuizQuestionsProvider = ({ children }) => {
   const [quizQuestions, setQuizQuestions] = useState([])
   const [playerAnswers, setPlayerAnswers] = useState([])
-  const [allQuizScores, setAllQuizScores] = useState([])
   const [quizSelection, setQuizSelection] = useState(() => ({
     amount: '5',
     category: '9',
@@ -27,9 +24,6 @@ const QuizQuestionsProvider = ({ children }) => {
 
     const url = 'https://opentdb.com/api.php'
     const query = `?amount=${amount}&category=${category}&difficulty=${difficulty}&type=${type}`
-
-    // console.log(quizSelection) // !LOG
-    // console.log(url + query) // !LOG
 
     fetch(url + query)
       .then(response => response.json())
@@ -44,13 +38,6 @@ const QuizQuestionsProvider = ({ children }) => {
       .catch(errMsg => console.error(errMsg))
   }, [quizSelection])
 
-  useEffect(() => {
-    // setAllQuizScores([])
-    if (false && playerAnswers.length) {
-      console.log({ allQuizScores }) // LOG
-    }
-  }, [allQuizScores])
-
   const value = {
     quizSelection,
     setQuizSelection,
@@ -58,8 +45,6 @@ const QuizQuestionsProvider = ({ children }) => {
     setQuizQuestions,
     playerAnswers,
     setPlayerAnswers,
-    allQuizScores,
-    setAllQuizScores,
   }
 
   return (

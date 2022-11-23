@@ -1,7 +1,17 @@
-.component_show-score {
-  border: 1px solid goldenrod;
-  padding: 10px 20px;
+.component__show-score {
+  // border: 1px solid goldenrod;
+  // padding: 10px 20px;
   color: goldenrod;
+
+  .score {
+    margin: 20px;
+  }
+  .correct-score {
+    color: rgb(206, 158, 56);
+  }
+  .total-score {
+    color: rgb(255, 166, 0);
+  }
 
   .form_save-score {
     margin: 5px;
@@ -30,6 +40,12 @@
       &:hover {
         border-color: goldenrod;
         background-color: rgb(255, 215, 0);
+        color: black;
+      }
+
+      &:active {
+        border-color: rgb(255, 215, 0);
+        background-color: goldenrod;
         color: black;
       }
     }
