@@ -1,4 +1,4 @@
-import './app.scss'
+import './app.css'
 import { Routes, Route } from 'react-router-dom'
 import Nav from './components/navigation/navigation.comp'
 
