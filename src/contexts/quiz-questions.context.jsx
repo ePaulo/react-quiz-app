@@ -13,7 +13,7 @@ const QuizQuestionsProvider = ({ children }) => {
   const [quizQuestions, setQuizQuestions] = useState([])
   const [playerAnswers, setPlayerAnswers] = useState([])
   const [quizSelection, setQuizSelection] = useState(() => ({
-    amount: '5',
+    amount: '0',
     category: '9',
     difficulty: 'easy',
     type: 'multiple',

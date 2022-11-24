@@ -8,14 +8,20 @@ import ShowQuestion from '../show-question/show-question.comp'
 const ListQuestions = ({ container }) => {
   const { quizQuestions, playerAnswers } = useContext(QuizQuestionsContext)
 
-  if (!quizQuestions.length) {
-    console.log('Waiting for Trivia data from API')
-    return <div>...loading</div>
+  if (container === 'quiz' && !quizQuestions.length) {
+    return (
+      <div className='component__list-questions'>
+        <p className='no-quiz-questions'>No quiz questions</p>
+      </div>
+    )
   }
 
   if (container === 'result' && !playerAnswers.length) {
-    console.log('No player answers')
-    return <div>No player answers</div>
+    return (
+      <div className='component__list-questions'>
+        <p className='no-player-answers'>No player answers</p>
+      </div>
+    )
   }
 
   const displayQuizQuestions = quizQuestions.map((quizQuestion, index) => {

@@ -3,4 +3,15 @@
   display: flex;
   flex-direction: column;
   row-gap: 15px;
+
+  .no-quiz-questions,
+  .no-player-answers {
+    margin: 10px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .no-quiz-questions {
+    margin-top: 0px;
+  }
 }

@@ -24,6 +24,10 @@ const selectStyles = {
     ...styles,
     color: 'rgb(41, 41, 41)',
   }),
+  dropdownIndicator: styles => ({
+    ...styles,
+    color: 'rgb(41, 41, 41)',
+  }),
 }
 
 const categoryOptions = [
