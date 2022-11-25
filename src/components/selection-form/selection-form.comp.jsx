@@ -20,6 +20,7 @@ const SelectionForm = () => {
   const [quizType, setQuizType] = useState(null)
 
   const { setQuizSelection } = useContext(QuizQuestionsContext)
+
   const navigate = useNavigate()
 
   const handleChangeAmount = event => setQuizAmount(event.target.value)
@@ -39,7 +40,7 @@ const SelectionForm = () => {
       })
       navigate('/quiz')
     } else {
-      alert('Please select all options')
+      alert('Please select all options') // unused... all fields "required"
     }
   }
 
@@ -57,6 +58,11 @@ const SelectionForm = () => {
           onChange={handleChangeAmount}
           required={true}
         />
+        <p>
+          {quizAmount && (
+            <em>Available time to answer questions: {quizAmount * 10}s.</em>
+          )}
+        </p>
 
         <Select
           name='quizCategory'

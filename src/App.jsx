@@ -1,7 +1,6 @@
 import './app.css'
 import { Routes, Route } from 'react-router-dom'
 import Nav from './components/navigation/navigation.comp'
-
 import Home from './containers/home-page/home.page'
 import Quiz from './containers/quiz-page/quiz.page'
 import Result from './containers/result-page/result.page'

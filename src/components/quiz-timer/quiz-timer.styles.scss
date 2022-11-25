@@ -1,3 +1,26 @@
 .component__quiz-timer {
   border: none;
+
+  .button_quiz-timer {
+    border: 3px solid gold;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    background-color: rgb(211, 161, 36);
+    padding: 10px 20px;
+    color: rgb(65, 52, 22);
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+      color: white;
+      border: 3px solid white;
+      background-color: red;
+    }
+
+    .button_quiz-timer--name {
+      margin-right: 10px;
+    }
+  }
 }

@@ -6,6 +6,8 @@ import ListScores from '../../components/list-scores/list-scores.comp'
 const Scores = () => {
   const navigate = useNavigate()
 
+  const isSavedScores = localStorage.getItem('quizScores') !== null
+
   const handleDeleteScores = () => {
     localStorage.removeItem('quizScores')
     navigate('/')
@@ -13,12 +15,12 @@ const Scores = () => {
 
   return (
     <div className='container__scores-page'>
-      <h1 className='title_scores-page'>Quiz Scores</h1>
+      <h1 className='title_scores-page'>Your Saved Quiz Scores</h1>
       <ListScores />
       <button
         className='button_delete-scores'
         type='button'
-        hidden={localStorage.getItem('quizScores') === null}
+        hidden={!isSavedScores}
         onClick={handleDeleteScores}
       >
         Delete Saved Scores

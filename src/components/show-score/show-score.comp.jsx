@@ -3,13 +3,51 @@ import { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { QuizQuestionsContext } from '../../contexts/quiz-questions.context'
 
-const ShowScore = () => {
+const ShowScore = ({ container }) => {
   const [playerName, setPlayerName] = useState('')
-  const { quizSelection, quizQuestions, playerAnswers } =
-    useContext(QuizQuestionsContext)
   const navigate = useNavigate()
 
-  if (!playerAnswers.length) return
+  const {
+    quizSelection,
+    quizQuestions,
+    playerAnswers,
+    playerTime,
+    quizStartTime,
+    quizGameActive,
+  } = useContext(QuizQuestionsContext)
+
+  if (!playerAnswers.length) return null
+
+  if (container === 'quiz') {
+    if (!quizGameActive && quizQuestions.length !== playerAnswers.length) {
+      return (
+        <div className='component__show-score'>
+          Quiz incomplete... all the questions needed to be answered to obtain a
+          score.
+        </div>
+      )
+    } else {
+      return null
+    }
+  }
+
+  if (container === 'result') {
+    if (quizQuestions.length !== playerAnswers.length) {
+      if (quizGameActive) {
+        return (
+          <div className='component__show-score'>
+            Unanswered questions. Return to Quiz page to continue.
+          </div>
+        )
+      } else {
+        return (
+          <div className='component__show-score'>
+            Score not calculated... all questions were not answered.
+          </div>
+        )
+      }
+    }
+  }
 
   const totalCorrect = quizQuestions.reduce(
     (total, question, queId) =>
@@ -32,31 +70,44 @@ const ShowScore = () => {
   const handleSaveScore = event => {
     event.preventDefault()
 
-    const date = new Date()
-    const dateStr = date.toLocaleDateString('en-GB', {
+    const savedQuizScores = JSON.parse(localStorage.getItem('quizScores'))
+    if (!savedQuizScores) {
+      localStorage.setItem('quizScores', JSON.stringify([]))
+    } else {
+      // check if quiz game has already been saved
+      const existingScore = savedQuizScores.find(
+        savedScore => savedScore.quizId === quizStartTime
+      )
+      if (existingScore) {
+        alert('Quiz game already saved')
+        return
+      }
+    }
+
+    // New quiz result, configure info and save to local storage
+    const quizId = quizStartTime
+    const savedDate = new Date()
+    const dateStr = savedDate.toLocaleDateString('en-GB', {
       day: 'numeric',
       month: 'short',
       year: 'numeric',
     })
-    const timeStr = date.toLocaleTimeString('en-GB', {
+    const timeStr = savedDate.toLocaleTimeString('en-GB', {
       hour: '2-digit',
       minute: '2-digit',
     })
 
-    // check for (and if none, create) a quizScores array in local storage
-    const savedScores = JSON.parse(localStorage.getItem('quizScores'))
-    if (!savedScores) {
-      localStorage.setItem('quizScores', JSON.stringify([]))
-    }
     // add new quiz score to local storage
     localStorage.setItem(
       'quizScores',
       JSON.stringify([
         ...JSON.parse(localStorage.getItem('quizScores')),
         {
+          quizId,
           dateStr,
           timeStr,
           playerName,
+          playerTime,
           totalCorrect,
           totalScore,
           quizSelection,
@@ -84,6 +135,7 @@ const ShowScore = () => {
   return (
     <div className='component__show-score'>
       <h2>
+        <span className='score time-used'>Time: {playerTime}s</span>
         <span className='score correct-score'>Correct: {totalCorrect}</span>
         <span className='score total-score'>Score: {totalScore}</span>
       </h2>

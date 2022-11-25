@@ -1,20 +1,17 @@
 import { createContext, useState, useEffect } from 'react'
 
-const QuizQuestionsContext = createContext({
-  quizSelection: {},
-  setQuizSelection: () => {},
-  quizQuestions: [],
-  setQuizQuestions: () => [],
-  playerAnswers: [],
-  setPlayerAnswers: () => [],
-})
+const QuizQuestionsContext = createContext()
 
 const QuizQuestionsProvider = ({ children }) => {
   const [quizQuestions, setQuizQuestions] = useState([])
   const [playerAnswers, setPlayerAnswers] = useState([])
+  const [playerTime, setPlayerTime] = useState(0)
+  const [quizStartTime, setQuizStartTime] = useState(0)
+  const [quizDuration, setQuizDuration] = useState(0)
+  const [quizGameActive, setQuizGameActive] = useState(false)
   const [quizSelection, setQuizSelection] = useState(() => ({
     amount: '0',
-    category: '9',
+    category: 'any',
     difficulty: 'easy',
     type: 'multiple',
   }))
@@ -30,9 +27,15 @@ const QuizQuestionsProvider = ({ children }) => {
       .then(data => {
         if (data.response_code === 0) {
           setQuizQuestions(data.results)
+          setQuizStartTime(new Date().getTime())
+          setQuizDuration(amount * 10000)
+          setQuizGameActive(true)
           setPlayerAnswers([])
+          setPlayerTime(0)
+        } else if (data.response_code === 2) {
+          console.log('Quiz questions loading')
         } else {
-          // throw new Error('data response error') // !LOG
+          throw new Error('data response error')
         }
       })
       .catch(errMsg => console.error(errMsg))
@@ -45,6 +48,14 @@ const QuizQuestionsProvider = ({ children }) => {
     setQuizQuestions,
     playerAnswers,
     setPlayerAnswers,
+    playerTime,
+    setPlayerTime,
+    quizStartTime,
+    setQuizStartTime,
+    quizDuration,
+    setQuizDuration,
+    quizGameActive,
+    setQuizGameActive,
   }
 
   return (

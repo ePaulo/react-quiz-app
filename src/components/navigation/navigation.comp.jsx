@@ -5,19 +5,19 @@ const Nav = () => {
   return (
     <nav className='component__nav'>
       <Link className='nav-link' to='/'>
-        Home
+        Select Quiz
       </Link>
 
       <Link className='nav-link' to='/quiz'>
-        Quiz
+        Answer Questions
       </Link>
 
       <Link className='nav-link' to='/result'>
-        Result
+        Save Quiz Results
       </Link>
 
       <Link className='nav-link' to='/scores'>
-        Scores
+        View Saved Scores
       </Link>
     </nav>
   )

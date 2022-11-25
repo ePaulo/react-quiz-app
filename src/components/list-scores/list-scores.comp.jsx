@@ -22,6 +22,7 @@ const ListScores = () => {
     { title: 'Category', field: 'categoryLabel' },
     { title: 'Level', field: 'difficulty' },
     { title: 'Player', field: 'playerName' },
+    { title: 'Time', field: 'timeUsed' },
     { title: 'Correct', field: 'correctRatio' },
     { title: 'Score', field: 'scoreRatio' },
   ]
@@ -31,6 +32,7 @@ const ListScores = () => {
       dateStr,
       timeStr,
       playerName,
+      playerTime,
       totalCorrect,
       totalScore,
       quizSelection,
@@ -42,6 +44,7 @@ const ListScores = () => {
       optionInfo => optionInfo.value === category
     ).label
 
+    const timeUsed = `${playerTime} sec`
     const correctRatio = `${totalCorrect} / ${amount}`
     const scoreRatio = `${totalScore} / ${amount * 2}`
 
@@ -52,6 +55,7 @@ const ListScores = () => {
       categoryLabel,
       difficulty,
       playerName,
+      timeUsed,
       correctRatio,
       scoreRatio,
     }
