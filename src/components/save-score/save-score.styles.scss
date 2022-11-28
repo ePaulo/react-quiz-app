@@ -1,0 +1,39 @@
+.component__save-score {
+  .form_save-score {
+    margin: 5px;
+    border: 1px solid rgb(129, 110, 2);
+    padding: 5px;
+
+    .save-score--name {
+      width: 225px;
+      padding: 10px;
+      color: goldenrod;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .save-score--submit {
+      margin: 5px;
+      border: 1px solid gold;
+      border-radius: 5px;
+      background-color: goldenrod;
+      padding: 10px;
+      color: rgb(53, 50, 50);
+      font-size: 16px;
+      font-weight: bold;
+      transition: 0.25s;
+
+      &:hover {
+        border-color: goldenrod;
+        background-color: rgb(255, 215, 0);
+        color: black;
+      }
+
+      &:active {
+        border-color: rgb(255, 215, 0);
+        background-color: goldenrod;
+        color: black;
+      }
+    }
+  }
+}

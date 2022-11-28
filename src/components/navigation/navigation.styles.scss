@@ -1,4 +1,4 @@
-.component__nav {
+.component__nav-bar {
   width: 100%;
   margin-bottom: 20px;
   display: flex;
@@ -22,5 +22,10 @@
       background-color: rgb(172, 130, 24);
       border-color: goldenrod;
     }
+  }
+
+  .active {
+    background-color: rgb(172, 130, 24);
+    border-color: goldenrod;
   }
 }

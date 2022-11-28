@@ -13,25 +13,5 @@
     flex-direction: row;
     column-gap: 20px;
     margin: 0 auto;
-
-    .choice {
-      color: rgb(7, 80, 56);
-      background-color: rgb(212, 180, 130);
-      padding: 5px 10px;
-      border: 2px solid rgb(206, 181, 128);
-      border-radius: 8px;
-      cursor: pointer;
-
-      &:hover {
-        background-color: rgb(243, 169, 79);
-        transition: 0.5s;
-      }
-
-      &:active {
-        background-color: orange;
-        border: 2px solid rgb(192, 134, 58);
-        transition: 0.5s;
-      }
-    }
   }
 }

@@ -1,26 +1,26 @@
 import './navigation.styles.scss'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
-const Nav = () => {
+const NavBar = () => {
   return (
-    <nav className='component__nav'>
-      <Link className='nav-link' to='/'>
+    <nav className='component__nav-bar'>
+      <NavLink className='nav-link' to='/'>
         Select Quiz
-      </Link>
+      </NavLink>
 
-      <Link className='nav-link' to='/quiz'>
+      <NavLink className='nav-link' to='/quiz'>
         Answer Questions
-      </Link>
+      </NavLink>
 
-      <Link className='nav-link' to='/result'>
+      <NavLink className='nav-link' to='/result'>
         Save Quiz Results
-      </Link>
+      </NavLink>
 
-      <Link className='nav-link' to='/scores'>
+      <NavLink className='nav-link' to='/scores'>
         View Saved Scores
-      </Link>
+      </NavLink>
     </nav>
   )
 }
 
-export default Nav
+export default NavBar

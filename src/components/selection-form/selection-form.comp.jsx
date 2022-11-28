@@ -1,15 +1,16 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Select from 'react-select'
 
 import { QuizQuestionsContext } from '../../contexts/quiz-questions.context'
-
 import {
   selectStyles,
   categoryOptions,
   difficultyOptions,
   typeOptions,
 } from './form-select.options'
+
+import { SECONDS_PER_QUESTION } from '../../settings/quiz.settings'
 
 import './selection-form.styles.scss'
 
@@ -19,9 +20,21 @@ const SelectionForm = () => {
   const [quizDifficulty, setQuizDifficulty] = useState(null)
   const [quizType, setQuizType] = useState(null)
 
-  const { setQuizSelection } = useContext(QuizQuestionsContext)
-
   const navigate = useNavigate()
+
+  const {
+    setQuizQuestions,
+    setPlayerAnswers,
+    setPlayerTime,
+    setQuizSelection,
+  } = useContext(QuizQuestionsContext)
+
+  useEffect(() => {
+    setQuizQuestions([])
+    setPlayerAnswers([])
+    setPlayerTime(0)
+    setQuizSelection(null)
+  }, [])
 
   const handleChangeAmount = event => setQuizAmount(event.target.value)
   const handleSelectCategory = choice => setQuizCategory(choice)
@@ -58,9 +71,12 @@ const SelectionForm = () => {
           onChange={handleChangeAmount}
           required={true}
         />
-        <p>
+        <p className='available-time'>
           {quizAmount && (
-            <em>Available time to answer questions: {quizAmount * 10}s.</em>
+            <>
+              Note: you'll have {quizAmount * SECONDS_PER_QUESTION} seconds to
+              answer {quizAmount} questions.
+            </>
           )}
         </p>
 

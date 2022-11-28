@@ -27,36 +27,40 @@ const QuizTimer = ({ container }) => {
   if (container === 'quiz' && !quizGameActive) {
     if (allQuestionsAnswered()) {
       return playerTime ? (
-        <div>
-          <em>Game over! Time used: {`${playerTime}`} seconds</em>
+        <div className='component__quiz-timer'>
+          <p className='game-over-note'>
+            Game over. Time used: {`${playerTime}`} seconds
+          </p>
         </div>
       ) : null
-    } else {
-      return null
+    } else if (!playerAnswers.length) {
+      return (
+        <div className='component__quiz-timer'>
+          <p className='game-over-note'>
+            Game over. Unanswered questions. Result not calculated.
+          </p>
+        </div>
+      )
     }
   }
 
   if (quizGameActive) {
     const renderer = ({ minutes, seconds }) => (
-      <span className='timer'>
+      <span className='countdown_timer'>
         {zeroPad(minutes)}:{zeroPad(seconds)}
       </span>
     )
 
     const handleStop = () => {
-      console.log('QuizTimer: handleStop')
       const currentTime = new Date().getTime()
-      console.log('playerTime: ', currentTime - quizStartTime)
       setPlayerTime(Math.round((currentTime - quizStartTime) / 100) / 10)
       setQuizGameActive(false)
       allQuestionsAnswered() && navigate('/result')
     }
 
     const handleComplete = () => {
-      console.log('QuizTimer: handleComplete')
-      setQuizGameActive(false)
-      console.log('playerTime: ', quizDuration)
       setPlayerTime(quizDuration / 1000)
+      setQuizGameActive(false)
       allQuestionsAnswered() && navigate('/result')
     }
 
@@ -71,11 +75,9 @@ const QuizTimer = ({ container }) => {
           <Countdown
             key={quizStartTime}
             date={quizStartTime + quizDuration}
-            // controlled={true}
             intervalDelay={1000}
             zeroPadTime={2}
             renderer={renderer}
-            onStop={handleStop}
             onComplete={handleComplete}
           />
         </button>

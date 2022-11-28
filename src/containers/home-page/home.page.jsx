@@ -1,5 +1,6 @@
-import './home.styles.scss'
 import SelectionForm from '../../components/selection-form/selection-form.comp'
+
+import './home.styles.scss'
 
 const Home = () => {
   return (

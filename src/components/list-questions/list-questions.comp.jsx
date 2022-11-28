@@ -6,9 +6,9 @@ import { QuizQuestionsContext } from '../../contexts/quiz-questions.context'
 import ShowQuestion from '../show-question/show-question.comp'
 
 const ListQuestions = ({ container }) => {
-  const { quizQuestions, playerAnswers } = useContext(QuizQuestionsContext)
+  const { quizQuestions } = useContext(QuizQuestionsContext)
 
-  if (container === 'quiz' && !quizQuestions.length) {
+  if (!quizQuestions.length) {
     return (
       <div className='component__list-questions'>
         <p className='no-quiz-questions'>No quiz questions</p>
@@ -16,25 +16,23 @@ const ListQuestions = ({ container }) => {
     )
   }
 
-  if (container === 'result' && !playerAnswers.length) {
-    return (
-      <div className='component__list-questions'>
-        <p className='no-player-answers'>No player answers</p>
-      </div>
-    )
-  }
+  const displayQuestions = quizQuestions.map((quizQuestion, queId) => {
+    const { question, correct_answer, incorrect_answers } = quizQuestion
+    const choices = [correct_answer, ...incorrect_answers].sort()
 
-  const displayQuizQuestions = quizQuestions.map((quizQuestion, index) => {
     return (
       <ShowQuestion
-        key={index}
-        quizQuestionId={index}
+        key={queId}
+        queId={queId}
+        queQuestion={question}
+        queChoices={choices}
+        queAnswer={correct_answer}
         showResult={container === 'result'}
       />
     )
   })
 
-  return <div className='component__list-questions'>{displayQuizQuestions}</div>
+  return <div className='component__list-questions'>{displayQuestions}</div>
 }
 
 export default ListQuestions

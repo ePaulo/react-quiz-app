@@ -1,5 +1,11 @@
 .component__quiz-timer {
-  border: none;
+  .game-over-note {
+    margin-bottom: 20px;
+    color: goldenrod;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-style: italic;
+  }
 
   .button_quiz-timer {
     border: 3px solid gold;
@@ -21,6 +27,10 @@
 
     .button_quiz-timer--name {
       margin-right: 10px;
+    }
+
+    .countdown_timer {
+      color: black;
     }
   }
 }
